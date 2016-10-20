@@ -121,7 +121,9 @@
 												</tr>
 											</thead>
 											<tbody>
+
 												<% @user.each do |i| %>
+												<tr>
 													<td><%= i.id %></td>
 													<td><%= i.username %></td>
 													<td><%= i.email %></td>
@@ -139,6 +141,7 @@
 														</button>
 													
 													</td>
+												</tr>	
 												<% end %>
 											</tbody>
 										</table>

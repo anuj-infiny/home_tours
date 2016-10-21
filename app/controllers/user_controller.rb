@@ -77,7 +77,7 @@ class UserController < ApplicationController
 		if session[:user_id]
 	    	@current_user = User.find(session["user_id"])
 	    	if @current_user.is_admin
-				@user = User.where(is_admin: nil)
+				@users = User.where(is_admin: nil)
 	    	else
 	    		redirect_to "/"
 	    	end

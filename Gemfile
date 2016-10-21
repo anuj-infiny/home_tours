@@ -28,6 +28,9 @@ gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'mysql2', '~> 0.3.18'
 
 gem "paperclip"
+
+gem 'geocoder'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

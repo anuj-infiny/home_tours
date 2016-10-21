@@ -11,7 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161020082536) do
+ActiveRecord::Schema.define(version: 20161021085812) do
+
+  create_table "home_images", force: :cascade do |t|
+    t.integer  "home_id",            limit: 4,   null: false
+    t.string   "photo",              limit: 255
+    t.string   "photo_file_name",    limit: 255
+    t.string   "photo_content_type", limit: 255
+    t.integer  "photo_file_size",    limit: 4
+    t.datetime "photo_updated_at"
+  end
+
+  create_table "homes", force: :cascade do |t|
+    t.string  "home_type",             limit: 255
+    t.string  "address",               limit: 255
+    t.string  "description",           limit: 255
+    t.date    "open_house_date"
+    t.time    "open_house_start_time"
+    t.time    "open_house_end_time"
+    t.boolean "for_sale"
+    t.integer "beds",                  limit: 4
+    t.integer "baths",                 limit: 4
+    t.string  "price",                 limit: 255
+    t.decimal "lat",                               precision: 10
+    t.decimal "lng",                               precision: 10
+  end
 
   create_table "users", force: :cascade do |t|
     t.string  "username",        limit: 255

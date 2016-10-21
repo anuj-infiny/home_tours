@@ -12,6 +12,12 @@ Rails.application.routes.draw do
   get 'user/delete/:user_id' => 'user#delete'
   get 'validate_username_old' => 'user#validate_username_old'
 
+  get 'home/index' => 'home#index'
+  get 'home/show/:home_id' => 'home#show'
+  match 'home/edit/:home_id' => 'home#edit', :via => [:get, :post]
+  get 'home/delete/:home_id' => 'home#delete'
+  post '/home_image/add/:home_id/' => 'home#home_image_add'
+  get '/home_image/delete/:image_id' => 'home#home_image_delete'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

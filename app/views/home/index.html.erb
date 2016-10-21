@@ -12,7 +12,7 @@
 
 				<!-- breadcrumb -->
 				<ol class="breadcrumb">
-					<li>Users</li>
+					<li>Homes</li>
 				</ol>
 				<!-- end breadcrumb -->
 
@@ -32,25 +32,15 @@
 
 			<!-- MAIN CONTENT -->
 			<div id="content">
-				<!-- <div id="embed-api-auth-container"></div>
-				<div id="chart-container"></div>
-				<div id="view-selector-container"></div> -->
+
 				<div class="row">
 					<div class="col-xs-4 col-sm-6 col-md-6 col-lg-6">
 						<h1 class="page-title txt-color-blueDark">
-							<i class="fa fa-fw fa-user-secret"></i> 
-								Users 
+							<i class="fa fa-fw fa-home"></i> 
+								Homes 
 						</h1>
 					</div>
-					<!-- <div class="col-xs-8 col-sm-6 col-md-6 col-lg-6" align="right">
-						<a href="/user/add/">
-							<div style="text-align: center; float: right; color: rgb(71, 69, 68); margin: 12px 0px 0px;cursor:pointer">
-								<i class="fa fa-plus-square-o" aria-hidden="true" style="font-size:24px"></i>
-								<p>Add User<p>
-							</div>
-						</a>
-						
-					</div> -->
+					
 				</div>
 				
 				<!-- widget grid -->
@@ -91,7 +81,7 @@
 								-->
 								<header>
 									<span class="widget-icon"> <i class="fa fa-table"></i> </span>
-									<h2>All Users</h2>
+									<h2>All Homes</h2>
 				
 								</header>
 				
@@ -112,37 +102,33 @@
 											<thead>			                
 												<tr>
 													<th data-hide="phone">ID</th>
-													<th data-class="expand">Username</th>
-													<th data-class="expand">Email</th>
-													<th data-hide="phone,tablet">First name</th>
-													<th data-hide="phone">Last Name</th>
+													<th data-class="expand">Address</th>
+													<th data-hide="phone,tablet">Type</th>
+													<th data-hide="phone,tablet">Price</th>
+													<th data-hide="phone">For Sale</th>
 													
 													<th>Action</th>
 												</tr>
 											</thead>
 											<tbody>
-
-												<% @users.each do |i| %>
-												<tr>
-													<td><%= i.id %></td>
-													<td><%= i.username %></td>
-													<td><%= i.email %></td>
-													<td><%= i.first_name %></td>
-													<td><%= i.last_name %></td>
-													<td>
-														<a href="/user/edit/<%= i.id %>">
-															<button class="btn btn-primary" type="button">
-																Edit
-															</button>
-														</a>
-														
-														<button class="btn btn-danger delete_row" type="button" data-toggle="modal" data-target="#del_Modal" data-user_id="<%= i.id %>">
-															Delete
-														</button>
-													
-													</td>
-												</tr>	
+												
+												<% @homes.each do |i| %>
+													<tr> 
+														<td><%= i.id %></td>
+														<td><%= i.address %></td>
+														<td><%= i.home_type %></td>
+														<td><%= i.price.to_i %></td>
+														<td><% if i.for_sale %>Yes<% else %>No<% end %></td>
+														<td>
+															<a href="/home/show/<%= i.id %>">
+																<button class="btn btn-primary" type="button">
+																	Details
+																</button>
+															</a>
+														</td>
+													</tr>
 												<% end %>
+										
 											</tbody>
 										</table>
 
@@ -183,39 +169,13 @@
 		</div>
 		<!-- END PAGE FOOTER -->
 
-		<!-- SHORTCUT AREA : With large tiles (activated via clicking user name tag)
-		Note: These tiles are completely responsive,
-		you can add as many as you like
-		-->
-		<div id="shortcut">
-			<ul>
-				<li>
-					<a href="inbox.html" class="jarvismetro-tile big-cubes bg-color-blue"> <span class="iconbox"> <i class="fa fa-envelope fa-4x"></i> <span>Mail <span class="label pull-right bg-color-darken">14</span></span> </span> </a>
-				</li>
-				<li>
-					<a href="calendar.html" class="jarvismetro-tile big-cubes bg-color-orangeDark"> <span class="iconbox"> <i class="fa fa-calendar fa-4x"></i> <span>Calendar</span> </span> </a>
-				</li>
-				<li>
-					<a href="gmap-xml.html" class="jarvismetro-tile big-cubes bg-color-purple"> <span class="iconbox"> <i class="fa fa-map-marker fa-4x"></i> <span>Maps</span> </span> </a>
-				</li>
-				<li>
-					<a href="invoice.html" class="jarvismetro-tile big-cubes bg-color-blueDark"> <span class="iconbox"> <i class="fa fa-book fa-4x"></i> <span>Invoice <span class="label pull-right bg-color-darken">99</span></span> </span> </a>
-				</li>
-				<li>
-					<a href="gallery.html" class="jarvismetro-tile big-cubes bg-color-greenLight"> <span class="iconbox"> <i class="fa fa-picture-o fa-4x"></i> <span>Gallery </span> </span> </a>
-				</li>
-				<li>
-					<a href="profile.html" class="jarvismetro-tile big-cubes selected bg-color-pinkDark"> <span class="iconbox"> <i class="fa fa-user fa-4x"></i> <span>My Profile </span> </span> </a>
-				</li>
-			</ul>
-		</div>
 		<div class="modal fade bs-example-modal-lg" id="del_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		  <div class="modal-dialog" role="document">
 		   
 		      <div class="modal-content">
 		        <div class="modal-header">
 		          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		          <h4 class="modal-title" id="myModalLabel" style="font-family: osb;color: #848C9C;">Delete User</h4>
+		          <h4 class="modal-title" id="myModalLabel" style="font-family: osb;color: #848C9C;">Delete Person</h4>
 		        </div>
 		       
 		        <div class="modal-footer">
@@ -315,7 +275,6 @@
 		<script src="/assets/js/plugin/datatables/dataTables.bootstrap.min.js"></script>
 		<script src="/assets/js/plugin/datatable-responsive/datatables.responsive.min.js"></script>
 
-		
 		<script type="text/javascript">
 		
 		// DO NOT REMOVE : GLOBAL FUNCTIONS!
@@ -324,13 +283,7 @@
 			
 			pageSetUp();
 			$('.side_tab').removeClass('active');
-			$('.user_tab').addClass('active');
-			$(document).on('click','.delete_row',function(){
-				var user_id = $(this).data('user_id');
-				var url = "/user/delete/"+user_id;
-				$("#del_Modal").find('#delete_it').attr('href',url);
-			});
-		
+			$('.home_tab').addClass('active');
 			jQuery("div.alert").delay(3000).fadeOut("slow");
 			/* // DOM Position key index //
 		
@@ -382,10 +335,6 @@
 			
 		})
 
-		
+
 		</script>
 
-		<!-- Your GOOGLE ANALYTICS CODE Below -->
-
-		
-		
